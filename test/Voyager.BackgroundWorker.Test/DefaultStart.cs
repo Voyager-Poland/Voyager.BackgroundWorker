@@ -26,7 +26,6 @@
 
 		protected virtual void AdditionConfiguration(IHostBuilder appBuilder)
 		{
-
 		}
 
 		protected virtual void SetBuilder(BackgroundBuilder builder)
