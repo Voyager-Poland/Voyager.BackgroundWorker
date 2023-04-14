@@ -46,9 +46,23 @@ namespace Microsoft.Extensions.DependencyInjection
 		}
 
 
+
 		public static BackgroundBuilder AddWorker(this BackgroundBuilder builder, Func<IServiceProvider, WorkerTask> implementationFactory)
 		{
 			builder.Services.AddTransient(typeof(WorkerTask), implementationFactory);
+			return builder;
+		}
+
+		public static BackgroundBuilder AddTimeToWakeUp<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TImplementation>(this BackgroundBuilder builder)
+				where TImplementation : TimeToWakeUp
+		{
+			builder.Services.AddTransient(typeof(TimeToWakeUp), typeof(TImplementation));
+			return builder;
+		}
+
+		public static BackgroundBuilder AddTimeToWakeUp(this BackgroundBuilder builder, Func<IServiceProvider, TimeToWakeUp> implementationFactory)
+		{
+			builder.Services.AddTransient(typeof(TimeToWakeUp), implementationFactory);
 			return builder;
 		}
 
@@ -68,7 +82,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
 		public static BackgroundBuilder SetTimeUpToWakeUp(this BackgroundBuilder builder, int timeToWakeUpSec = 60)
 		{
-			builder.Services.AddTransient((prov) => { return timeToWakeUpSec > -1 ? new TimeToWakeUpSetted(timeToWakeUpSec) : new TimeToWakeUp(); }); ;
+			builder.AddTimeToWakeUp((prov) => { return timeToWakeUpSec > -1 ? new TimeToWakeUpSetted(timeToWakeUpSec) : new TimeToWakeUp(); }); ;
 			return builder;
 		}
 
