@@ -11,7 +11,7 @@
 
 		protected override void ProcessOneTask(CancellationToken stoppingToken)
 		{
-			logger.LogInformation("WackUp");
+			logger.LogInformation("WakeUp");
 			base.ProcessOneTask(stoppingToken);
 		}
 
