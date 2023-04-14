@@ -46,7 +46,6 @@ namespace Microsoft.Extensions.DependencyInjection
 		}
 
 
-
 		public static BackgroundBuilder AddWorker(this BackgroundBuilder builder, Func<IServiceProvider, WorkerTask> implementationFactory)
 		{
 			builder.Services.AddTransient(typeof(WorkerTask), implementationFactory);

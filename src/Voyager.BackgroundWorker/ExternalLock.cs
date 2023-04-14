@@ -2,13 +2,12 @@
 {
 	public class ExternalLock
 	{
-
-		public void RunProtectedTask(WorkerTask serviceTask, CancellationToken cancellationToken)
+		public void RunProtectedTask(Action<CancellationToken> action, CancellationToken cancellationToken)
 		{
 			BeginLock();
 			try
 			{
-				serviceTask.Run(cancellationToken);
+				action.Invoke(cancellationToken);
 			}
 			finally
 			{
