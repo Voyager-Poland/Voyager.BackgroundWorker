@@ -1,5 +1,4 @@
 # Voyager.BackgroundWorker
-
 ---
  The service continuously executes tasks based on time intervals. Protects from overlapping between new requests during the previous operation hasn't been finished. Can be configured to be triggered through http request. Can be extended for purposes to carry out customized control about exclusive executive the one task in an environment.
 
@@ -16,10 +15,10 @@ To start using the service is required to implement the interface:
 ```.NET CLI 
 namespace Voyager.BackgroundWorker
 {
-	public interface WorkerTask
-	{
-		void Run(CancellationToken cancellationToken);
-	}
+  public interface WorkerTask
+  {
+    void Run(CancellationToken cancellationToken);
+  }
 }
 ```
 
@@ -28,10 +27,10 @@ Assume that is implemented the task:
 ```.NET CLI 
 public class MyTask : Voyager.BackgroundWorker.WorkerTask
 {
-	public void Run(CancellationToken cancellationToken)
-	{
-		// The logic goes here!
-	}
+  public void Run(CancellationToken cancellationToken)
+  {
+    // The logic goes here!
+  }
 }
 ```
 Then service is configure by the method:
@@ -86,7 +85,7 @@ class Startup
   }
 }
 ```
-## 🔧 How to configure external lock
+## 🔧 How to configure the external lock
 
 After custom implementation the class Voyager.BackgroundWorker.ExternalLock. There is the possibility to use the logic in the service by registration through the method:
 
