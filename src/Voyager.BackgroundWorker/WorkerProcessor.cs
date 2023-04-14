@@ -1,6 +1,6 @@
 ﻿namespace Voyager.BackgroundWorker
 {
-	internal sealed partial class WorkerProcessor
+	internal sealed class WorkerProcessor
 	{
 		readonly IServiceProvider provider;
 

@@ -1,20 +1,19 @@
 ﻿namespace Voyager.BackgroundWorker
 {
-	internal sealed partial class WorkerProcessor
+
+	class ExecutionGuard : ExecutionExternalLock
 	{
-		class ExecutionGuard : ExecutionExternalLock
+		private Guard guard;
+
+		public ExecutionGuard(WorkerTask workerTask, ExternalLock externalLock, Guard guard) : base(workerTask, externalLock)
 		{
-			private Guard guard;
+			this.guard = guard;
+		}
 
-			public ExecutionGuard(WorkerTask workerTask, ExternalLock externalLock, Guard guard) : base(workerTask, externalLock)
-			{
-				this.guard = guard;
-			}
-
-			public override void Execute(CancellationToken cancellationToken)
-			{
-				guard.ProcessAction(base.Execute, cancellationToken);
-			}
+		public override void Execute(CancellationToken cancellationToken)
+		{
+			guard.ProcessAction(base.Execute, cancellationToken);
 		}
 	}
+
 }
