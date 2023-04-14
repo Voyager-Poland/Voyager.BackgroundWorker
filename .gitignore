@@ -396,3 +396,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# SVN
+src/Voyager.BackgroundWorker/.svn/*
+test/Voyager.BackgroundWorker.Test/.svn/*
+
+
