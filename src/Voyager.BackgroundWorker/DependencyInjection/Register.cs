@@ -9,20 +9,15 @@ namespace Microsoft.Extensions.DependencyInjection
 
 		public static BackgroundBuilder AddBackgroundWorkerCore(this IServiceCollection services)
 		{
-			services.AddSingleton((prov) =>
+			services.AddTransient((prov) =>
 			{
 				return new WorkerProcessor(prov);
 			});
 			services.AddHostedService<WorkerService>();
-
-			services.AddSingleton(prov =>
-			{
-				ILogger<Voyager.BackgroundWorker.Guard> logg = prov.GetService<ILogger<Voyager.BackgroundWorker.Guard>>()!;
-				if (logg != null)
-					return new GuardMonitored(logg);
-				else
-					return new Voyager.BackgroundWorker.Guard();
-			});
+			services.AddSingleton<StopApplicationProcess>();
+			services.AddGuard();
+			services.AddExecutionWorker();
+			services.AddProcessingJob();
 
 			BackgroundBuilder builder = new BackgroundBuilder(services);
 			return builder;
@@ -44,7 +39,6 @@ namespace Microsoft.Extensions.DependencyInjection
 			builder.Services.AddTransient(typeof(WorkerTask), typeof(TImplementation));
 			return builder;
 		}
-
 
 		public static BackgroundBuilder AddWorker(this BackgroundBuilder builder, Func<IServiceProvider, WorkerTask> implementationFactory)
 		{
@@ -72,7 +66,6 @@ namespace Microsoft.Extensions.DependencyInjection
 			return builder;
 		}
 
-
 		public static BackgroundBuilder AddExternalLock(this BackgroundBuilder builder, Func<IServiceProvider, ExternalLock> implementationFactory)
 		{
 			builder.Services.AddTransient(typeof(ExternalLock), implementationFactory);
@@ -83,6 +76,38 @@ namespace Microsoft.Extensions.DependencyInjection
 		{
 			builder.AddTimeToWakeUp((prov) => { return timeToWakeUpSec > -1 ? new TimeToWakeUpSetted(timeToWakeUpSec) : new TimeToWakeUp(); }); ;
 			return builder;
+		}
+
+		private static void AddGuard(this IServiceCollection services)
+		{
+			services.AddSingleton(prov =>
+			{
+				ILogger<Voyager.BackgroundWorker.Guard> logg = prov.GetService<ILogger<Voyager.BackgroundWorker.Guard>>()!;
+				if (logg != null)
+					return new GuardMonitored(logg);
+				else
+					return new Voyager.BackgroundWorker.Guard();
+			});
+		}
+
+		private static IServiceCollection AddExecutionWorker(this IServiceCollection services)
+		{
+			return services.AddTransient<ExecutionWorker>((serviceProvider) =>
+			{
+				return new ExecutionGuard(serviceProvider.GetService<WorkerTask>()!, serviceProvider.GetService<ExternalLock>()!, serviceProvider.GetService<Guard>()!);
+			});
+		}
+
+		private static void AddProcessingJob(this IServiceCollection services)
+		{
+			services.AddTransient<ProcessingJobs>((prov) =>
+			{
+				ILogger? logger = prov.GetService<ILogger<ProcessingJobs>>();
+				WorkerProcessor worker = prov.GetService<WorkerProcessor>()!;
+				StopApplicationProcess stopProcess = prov.GetService<StopApplicationProcess>()!;
+				TimeToWakeUp timeToWakeUp = prov.GetService<TimeToWakeUp>()!;
+				return logger != null ? new ProcessingJobMonitored(worker, timeToWakeUp, stopProcess.StopApplication, logger) : new ProcessingJobs(worker, timeToWakeUp, stopProcess.StopApplication);
+			});
 		}
 
 	}

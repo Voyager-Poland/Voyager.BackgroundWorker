@@ -15,7 +15,7 @@
 				{
 					using var scope = provider.CreateScope();
 					var serviceProvider = scope.ServiceProvider;
-					ExecutionWorker myTask = new ExecutionGuard(serviceProvider.GetService<WorkerTask>()!, serviceProvider.GetService<ExternalLock>()!, serviceProvider.GetService<Guard>()!);
+					ExecutionWorker myTask = serviceProvider.GetService<ExecutionWorker>()!;
 					myTask.Execute(cancellationToken);
 				});
 		}

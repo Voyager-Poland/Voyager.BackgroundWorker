@@ -1,6 +1,6 @@
 ﻿namespace Voyager.BackgroundWorker
 {
-	class ExecutionWorker
+	public class ExecutionWorker
 	{
 		private readonly WorkerTask workerTask;
 

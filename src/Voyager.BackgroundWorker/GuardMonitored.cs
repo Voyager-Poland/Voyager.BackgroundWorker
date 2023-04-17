@@ -4,7 +4,7 @@
 	{
 		readonly ILogger logger;
 
-		public GuardMonitored(ILogger<Guard> logger)
+		public GuardMonitored(ILogger logger)
 		{
 			this.logger = logger;
 		}

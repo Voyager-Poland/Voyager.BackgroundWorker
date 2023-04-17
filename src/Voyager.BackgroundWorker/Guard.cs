@@ -4,8 +4,6 @@
 
 namespace Voyager.BackgroundWorker
 {
-
-
 	internal class Guard
 	{
 		readonly SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1);

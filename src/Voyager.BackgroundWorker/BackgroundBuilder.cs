@@ -2,7 +2,7 @@
 {
 	public class BackgroundBuilder
 	{
-		public BackgroundBuilder(IServiceCollection services)
+		internal BackgroundBuilder(IServiceCollection services)
 		{
 			Services = services;
 		}

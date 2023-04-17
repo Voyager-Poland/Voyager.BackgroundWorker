@@ -1,6 +1,6 @@
 ﻿namespace Voyager.BackgroundWorker
 {
-	class ProcessingJobs
+	internal class ProcessingJobs
 	{
 		private WorkerProcessor worker;
 		private Action onTerminateCall;
