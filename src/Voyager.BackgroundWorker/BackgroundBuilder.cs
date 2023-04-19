@@ -1,4 +1,6 @@
-﻿namespace Voyager.BackgroundWorker
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace Voyager.BackgroundWorker
 {
 	public class BackgroundBuilder
 	{

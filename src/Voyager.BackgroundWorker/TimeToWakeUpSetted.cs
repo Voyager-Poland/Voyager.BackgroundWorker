@@ -1,4 +1,6 @@
-﻿namespace Voyager.BackgroundWorker
+﻿using System;
+
+namespace Voyager.BackgroundWorker
 {
 	public class TimeToWakeUpSetted : TimeToWakeUp
 	{
@@ -10,7 +12,7 @@
 
 		public override bool GetCallDecision(DateTime lastCallTime)
 		{
-			TimeSpan timeSpan = new(DateTime.Now.Ticks - lastCallTime.Ticks);
+			TimeSpan timeSpan = new TimeSpan(DateTime.Now.Ticks - lastCallTime.Ticks);
 			if (timeSpan.TotalSeconds > timeToWakaUseSec)
 				return true;
 			return false;

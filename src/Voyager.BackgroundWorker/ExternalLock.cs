@@ -1,4 +1,7 @@
-﻿namespace Voyager.BackgroundWorker
+﻿using System;
+using System.Threading;
+
+namespace Voyager.BackgroundWorker
 {
 	public class ExternalLock
 	{

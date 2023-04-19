@@ -1,4 +1,6 @@
-﻿namespace Voyager.BackgroundWorker
+﻿using System;
+
+namespace Voyager.BackgroundWorker
 {
 	public class TimeToWakeUp
 	{

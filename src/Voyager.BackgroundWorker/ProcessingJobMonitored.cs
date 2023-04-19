@@ -1,4 +1,8 @@
-﻿namespace Voyager.BackgroundWorker
+﻿using Microsoft.Extensions.Logging;
+using System;
+using System.Threading;
+
+namespace Voyager.BackgroundWorker
 {
 	class ProcessingJobMonitored : ProcessingJobs
 	{

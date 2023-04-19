@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using Voyager.BackgroundWorker;
 using Voyager.BackgroundWorker.Defaults;
 
@@ -33,7 +34,7 @@ namespace Microsoft.Extensions.DependencyInjection
 			return builder;
 		}
 
-		public static BackgroundBuilder AddWorker<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TImplementation>(this BackgroundBuilder builder)
+		public static BackgroundBuilder AddWorker<TImplementation>(this BackgroundBuilder builder)
 								where TImplementation : WorkerTask
 		{
 			builder.Services.AddTransient(typeof(WorkerTask), typeof(TImplementation));
@@ -46,7 +47,7 @@ namespace Microsoft.Extensions.DependencyInjection
 			return builder;
 		}
 
-		public static BackgroundBuilder AddTimeToWakeUp<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TImplementation>(this BackgroundBuilder builder)
+		public static BackgroundBuilder AddTimeToWakeUp<TImplementation>(this BackgroundBuilder builder)
 				where TImplementation : TimeToWakeUp
 		{
 			builder.Services.AddTransient(typeof(TimeToWakeUp), typeof(TImplementation));
@@ -59,7 +60,7 @@ namespace Microsoft.Extensions.DependencyInjection
 			return builder;
 		}
 
-		public static BackgroundBuilder AddExternalLock<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TImplementation>(this BackgroundBuilder builder)
+		public static BackgroundBuilder AddExternalLock<TImplementation>(this BackgroundBuilder builder)
 						where TImplementation : ExternalLock
 		{
 			builder.Services.AddTransient(typeof(ExternalLock), typeof(TImplementation));

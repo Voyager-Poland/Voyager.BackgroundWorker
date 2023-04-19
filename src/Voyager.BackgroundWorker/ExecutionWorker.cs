@@ -1,4 +1,6 @@
-﻿namespace Voyager.BackgroundWorker
+﻿using System.Threading;
+
+namespace Voyager.BackgroundWorker
 {
 	public class ExecutionWorker
 	{

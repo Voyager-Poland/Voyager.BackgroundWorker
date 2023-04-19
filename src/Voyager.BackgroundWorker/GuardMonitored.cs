@@ -1,4 +1,7 @@
-﻿namespace Voyager.BackgroundWorker
+﻿using Microsoft.Extensions.Logging;
+using System.Threading;
+
+namespace Voyager.BackgroundWorker
 {
 	internal class GuardMonitored : Guard
 	{

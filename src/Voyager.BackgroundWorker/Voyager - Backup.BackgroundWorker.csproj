@@ -1,20 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;net6.0</TargetFrameworks>    
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
-    <DefineConstants>OLDFRAME</DefineConstants>
-    <MyFrame>OLD</MyFrame>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-    <MyFrame>NEW</MyFrame>
-  </PropertyGroup>
-
-
-  <PropertyGroup>
+    <TargetFrameworks>netcoreapp3.1;net6.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
+  </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
+      <MyFrame>OLD</MyFrame>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+      <MyFrame>NEW</MyFrame>
+    </PropertyGroup>
+  
+  
+  <PropertyGroup>  
+		<ImplicitUsings>enable</ImplicitUsings>
 		<OutputType>Library</OutputType>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>VoyagerS3Key.snk</AssemblyOriginatorKeyFile>
@@ -43,9 +43,4 @@
       <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
-
-  <ItemGroup Condition=" '$(MyFrame)' == 'OLD'">
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
-  </ItemGroup>
-
 </Project>

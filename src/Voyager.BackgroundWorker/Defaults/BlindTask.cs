@@ -1,4 +1,7 @@
-﻿namespace Voyager.BackgroundWorker.Defaults
+﻿using System;
+using System.Threading;
+
+namespace Voyager.BackgroundWorker.Defaults
 {
 	internal class BlindTask : WorkerTask
 	{

@@ -1,4 +1,7 @@
-﻿namespace Voyager.BackgroundWorker
+﻿using System;
+using System.Threading;
+
+namespace Voyager.BackgroundWorker
 {
 	internal class ProcessingJobs
 	{

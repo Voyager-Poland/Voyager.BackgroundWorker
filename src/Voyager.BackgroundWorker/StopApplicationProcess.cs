@@ -1,4 +1,6 @@
-﻿namespace Voyager.BackgroundWorker
+﻿using Microsoft.Extensions.Hosting;
+
+namespace Voyager.BackgroundWorker
 {
 	internal class StopApplicationProcess
 	{

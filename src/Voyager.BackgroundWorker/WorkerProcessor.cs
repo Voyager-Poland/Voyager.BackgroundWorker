@@ -1,4 +1,9 @@
-﻿namespace Voyager.BackgroundWorker
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Voyager.BackgroundWorker
 {
 	internal sealed class WorkerProcessor
 	{
