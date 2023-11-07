@@ -10,7 +10,7 @@ namespace Voyager.BackgroundWorker
 			this.timeToWakaUseSec = timeToWakapeSec;
 		}
 
-		public override bool GetCallDecision(DateTime lastCallTime)
+		public override bool GetCallDecision(DateTime lastCallTime, System.Threading.CancellationToken stoppingToken)
 		{
 			TimeSpan timeSpan = new TimeSpan(DateTime.Now.Ticks - lastCallTime.Ticks);
 			if (timeSpan.TotalSeconds > timeToWakaUseSec)

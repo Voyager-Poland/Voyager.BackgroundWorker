@@ -32,10 +32,10 @@
 			{
 			}
 
-			public override bool GetCallDecision(DateTime lastCallTime)
+			public override bool GetCallDecision(DateTime lastCallTime, System.Threading.CancellationToken stoppingToken)
 			{
 				TimeToWakeUpTest.someOneCall = true;
-				return base.GetCallDecision(lastCallTime);
+				return base.GetCallDecision(lastCallTime, stoppingToken);
 			}
 		}
 	}

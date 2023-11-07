@@ -58,7 +58,7 @@ namespace Voyager.BackgroundWorker
 		{
 			while (!stoppingToken.IsCancellationRequested)
 			{
-				if (timeToWakeUp.GetCallDecision(callTime))
+				if (timeToWakeUp.GetCallDecision(callTime, stoppingToken))
 					break;
 				Thread.Sleep(1000);
 			}
