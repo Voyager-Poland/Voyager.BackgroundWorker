@@ -10,10 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
 		public static BackgroundBuilder AddBackgroundWorkerCore(this IServiceCollection services)
 		{
-			services.AddTransient((prov) =>
-			{
-				return new WorkerProcessor(prov);
-			});
+			services.AddTransient<WorkerProcessor>();
 			services.AddHostedService<WorkerService>();
 			services.AddSingleton<StopApplicationProcess>();
 			services.AddGuard();
@@ -28,7 +25,7 @@ namespace Microsoft.Extensions.DependencyInjection
 		public static BackgroundBuilder AddBackgroundWorker(this IServiceCollection services)
 		{
 			BackgroundBuilder builder = AddBackgroundWorkerCore(services);
-			builder.AddWorker((p) => { return new BlindTask(); });
+			builder.AddWorker<BlindTask>();
 			builder.AddExternalLock<ExternalLock>();
 			builder.SetTimeUpToWakeUp(60);
 			return builder;

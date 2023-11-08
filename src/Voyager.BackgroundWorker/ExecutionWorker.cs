@@ -11,10 +11,7 @@ namespace Voyager.BackgroundWorker
 			this.workerTask = workerTask;
 		}
 
-		public virtual void Execute(CancellationToken cancellationToken)
-		{
-			workerTask.Run(cancellationToken);
-		}
+		public virtual void Execute(CancellationToken cancellationToken) => workerTask.Run(cancellationToken);
 	}
 }
 

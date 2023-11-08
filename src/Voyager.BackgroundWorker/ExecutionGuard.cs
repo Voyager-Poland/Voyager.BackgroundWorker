@@ -2,7 +2,6 @@
 
 namespace Voyager.BackgroundWorker
 {
-
 	class ExecutionGuard : ExecutionExternalLock
 	{
 		private Guard guard;
@@ -17,5 +16,4 @@ namespace Voyager.BackgroundWorker
 			guard.ProcessAction(base.Execute, cancellationToken);
 		}
 	}
-
 }
