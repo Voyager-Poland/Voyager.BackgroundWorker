@@ -10,12 +10,17 @@ namespace Voyager.BackgroundWorker
 			BeginLock();
 			try
 			{
-				action.Invoke(cancellationToken);
+				Call(action, cancellationToken);
 			}
 			finally
 			{
 				EndLock();
 			}
+		}
+
+		protected virtual void Call(Action<CancellationToken> action, CancellationToken cancellationToken)
+		{
+			action.Invoke(cancellationToken);
 		}
 
 		public virtual void BeginLock() { }
