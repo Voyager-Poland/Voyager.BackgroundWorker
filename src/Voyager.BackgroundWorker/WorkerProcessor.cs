@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -7,18 +6,18 @@ namespace Voyager.BackgroundWorker
 {
 	internal sealed class WorkerProcessor
 	{
-		readonly IServiceProvider provider;
+		readonly IServiceScopeFactory factory;
 
-		public WorkerProcessor(IServiceProvider provider)
+		public WorkerProcessor(IServiceScopeFactory factory)
 		{
-			this.provider = provider;
+			this.factory = factory;
 		}
 
 		public Task ServiceRun(CancellationToken cancellationToken)
 		{
 			return Task.Run(() =>
 				{
-					using var scope = provider.CreateScope();
+					using var scope = factory.CreateScope();
 					var serviceProvider = scope.ServiceProvider;
 					ExecutionWorker myTask = serviceProvider.GetService<ExecutionWorker>()!;
 					myTask.Execute(cancellationToken);
