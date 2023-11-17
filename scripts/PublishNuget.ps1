@@ -1,4 +1,4 @@
-$version='1.7.2'
+$version='1.8.0'
 dotnet build -c Release   /property:Version=$version
 dotnet pack -c Release /property:Version=$version
 
