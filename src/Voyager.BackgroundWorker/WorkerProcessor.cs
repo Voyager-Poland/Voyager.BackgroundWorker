@@ -21,7 +21,7 @@ namespace Voyager.BackgroundWorker
 					var serviceProvider = scope.ServiceProvider;
 					ExecutionWorker myTask = serviceProvider.GetService<ExecutionWorker>()!;
 					myTask.Execute(cancellationToken);
-				});
+				}, cancellationToken);
 		}
 	}
 }
