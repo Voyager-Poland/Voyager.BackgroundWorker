@@ -12,7 +12,6 @@
     <MyFrame>NEW</MyFrame>
   </PropertyGroup>
 
-
   <PropertyGroup>
 		<Nullable>enable</Nullable>
 		<OutputType>Library</OutputType>
