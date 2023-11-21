@@ -35,8 +35,8 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: my-nuget
-        path: /home/runner/work/Voyager.BackgroundWorker/Voyager.BackgroundWorker/src/Voyager.BackgroundWorker/bin/Release/*.nupkg
+        path: ${{ github.workspace }}/src/Voyager.BackgroundWorker/bin/Release/*.nupkg
     - name: Publish the package to GPR
-      run: dotnet nuget push /home/runner/work/Voyager.BackgroundWorker/Voyager.BackgroundWorker/src/Voyager.BackgroundWorker/bin/Release/*.nupkg -s Voyager-Poland
+      run: dotnet nuget push ${{ github.workspace }}/src/Voyager.BackgroundWorker/bin/Release/*.nupkg -s Voyager-Poland  --skip-duplicate
 
 
