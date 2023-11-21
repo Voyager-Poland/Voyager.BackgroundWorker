@@ -31,7 +31,11 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal -c Release
     - name: Pack
-      run: dotnet pack --no-restore --no-build -c Release  /home/runner/work/Voyager.BackgroundWorker/Voyager.BackgroundWorker/src/Voyager.BackgroundWorker/Voyager.BackgroundWorker.csproj
+      run: dotnet pack --no-restore --no-build -c Release ${{ github.workspace }}/src/Voyager.BackgroundWorker/Voyager.BackgroundWorker.csproj
+    - uses: actions/upload-artifact@v3
+      with:
+        name: my-nuget
+        path: /home/runner/work/Voyager.BackgroundWorker/Voyager.BackgroundWorker/src/Voyager.BackgroundWorker/bin/Release/*.nupkg
     - name: Publish the package to GPR
       run: dotnet nuget push /home/runner/work/Voyager.BackgroundWorker/Voyager.BackgroundWorker/src/Voyager.BackgroundWorker/bin/Release/*.nupkg -s Voyager-Poland
 
