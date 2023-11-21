@@ -30,6 +30,7 @@
     <PackageTags>Service,Worker,BackgroundService</PackageTags>
     <PackageIcon>voyager-nugets-ikona-128x128.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>1.8.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
