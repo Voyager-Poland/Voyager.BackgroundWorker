@@ -1,0 +1,21 @@
+name: Voyager.BackgroundWorker
+id: 'ari:cloud:compass:6f4ff44f-3daf-4331-936e-f105ac8a0cc5:component/dbdd9e20-37cf-4147-9a6c-5bc93cc76ce7/babb1537-14e1-4fb0-bee6-a17d86a4d55b'
+description: null
+configVersion: 1
+typeId: LIBRARY
+ownerId: null
+fields:
+  tier: 4
+links:
+  - name: ''
+    type: REPOSITORY
+    url: 'https://github.com/Voyager-Poland/Voyager.BackgroundWorker'
+relationships: {}
+labels: null
+customFields:
+  - name: Źródła w SVN
+    type: text
+    value: null
+
+# Learn more about formatting compass.yml:
+# https://go.atlassian.com/compass-yml-format
