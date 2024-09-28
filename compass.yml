@@ -15,7 +15,7 @@ labels: null
 customFields:
   - name: Źródła w SVN
     type: text
-    value: testvalue
+    value: testvalue2
 
 # Learn more about formatting compass.yml:
 # https://go.atlassian.com/compass-yml-format
