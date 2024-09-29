@@ -1,6 +1,6 @@
 name: Voyager.BackgroundWorker
 id: 'ari:cloud:compass:6f4ff44f-3daf-4331-936e-f105ac8a0cc5:component/dbdd9e20-37cf-4147-9a6c-5bc93cc76ce7/babb1537-14e1-4fb0-bee6-a17d86a4d55b'
-description: null
+description: 'The service continuously executes tasks based on time interval'
 configVersion: 1
 typeId: LIBRARY
 ownerId: null
@@ -13,9 +13,9 @@ links:
 relationships: {}
 labels: null
 customFields:
-  - name: Źródła w SVN
+  - name: SVNRepositiry
     type: text
-    value: testvalue3
+    value: 'testvalue3'
 
 # Learn more about formatting compass.yml:
 # https://go.atlassian.com/compass-yml-format
